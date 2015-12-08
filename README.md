@@ -1,5 +1,5 @@
 Extra modules for LSTMS 
 
-SpatialConvlutionNoBias
+SpatialConvolutionNoBias
 
 SpatialFullConvolutionNoBias
