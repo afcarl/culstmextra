@@ -16,7 +16,7 @@ LUA_EXTERNC DLL_EXPORT int luaopen_liblstmextra(lua_State *L);
 int luaopen_liblstmextra(lua_State *L)
 {
   lua_newtable(L);
-  lstmextra_SpatialFullConvolutionNoBias_init(L);
+  culstmextra_SpatialFullConvolutionNoBias_init(L);
 
   return 1;
 }

@@ -16,12 +16,12 @@ require 'cunn'
    local inj = (outj-1)*sj+kj-padH*2
 
   local tm = {}
---   local title = string.format('SpatialConvolutionMM.forward %dx%dx%dx%d o %dx%d -> %dx%dx%dx%d [s: %dx%d] [p: %dx%d]',
+--   local title = string.format('SpatialConvolutionNoBias.forward %dx%dx%dx%d o %dx%d -> %dx%dx%dx%d [s: %dx%d] [p: %dx%d]',
 --                               bs, from, inj, ini, kj, ki, bs, to, outj, outi, sj, si, padH, padW)
 --   times[title] = tm
 
    local input = torch.randn(bs,from,inj,ini)
-   local sconv = nn.SpatialConvolutionMM(from,to,ki,kj,si,sj,padW,padH)
+   local sconv = nn.SpatialConvolutionNoBias(from,to,ki,kj,si,sj,padW,padH)
    local groundtruth = sconv:forward(input)
    local a = torch.Timer()
    local nloop = 1
@@ -32,7 +32,7 @@ require 'cunn'
    tm.cpu = a:time().real
 
    input = input:cuda()
-   local gconv = nn.SpatialConvolutionMM(from,to,ki,kj,si,sj,padW,padH):cuda()
+   local gconv = nn.SpatialConvolutionNoBias(from,to,ki,kj,si,sj,padW,padH):cuda()
    gconv.weight = sconv.weight:cuda()
    gconv.bias = sconv.bias:cuda()
    local rescuda = gconv:forward(input)

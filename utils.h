@@ -9,8 +9,8 @@ extern "C"
 #include <THC/THC.h>
 
 THCState* getCutorchState(lua_State* L);
-void lstmextra_SpatialFullConvolutionNoBias_init(lua_State *L);
-void lstmextra_SpatialConvolutionNoBias_init(lua_State *L);
+void culstmextra_SpatialFullConvolutionNoBias_init(lua_State *L);
+void culstmextra_SpatialConvolutionNoBias_init(lua_State *L);
 //void extracunn_Huber_init(lua_State *L);
 
 #endif

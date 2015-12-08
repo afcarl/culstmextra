@@ -1,5 +1,6 @@
-Extra modules for LSTMS 
+Extra modules for LSTMs 
 
 SpatialConvolutionNoBias
 
 SpatialFullConvolutionNoBias
+
