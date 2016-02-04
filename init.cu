@@ -11,12 +11,13 @@
 
 #include "utils.h"
 
-LUA_EXTERNC DLL_EXPORT int luaopen_liblstmextra(lua_State *L);
+LUA_EXTERNC DLL_EXPORT int luaopen_libculstmextra(lua_State *L);
 
-int luaopen_liblstmextra(lua_State *L)
+int luaopen_libculstmextra(lua_State *L)
 {
   lua_newtable(L);
   culstmextra_SpatialFullConvolutionNoBias_init(L);
+  culstmextra_SpatialConvolutionNoBias_init(L);
 
   return 1;
 }

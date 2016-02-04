@@ -2,7 +2,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8 FATAL_ERROR)
 CMAKE_POLICY(VERSION 2.8)
 
 IF(LUAROCKS_PREFIX)
-  MESSAGE(STATUS "Installing lstmextra through Luarocks")
+  MESSAGE(STATUS "Installing culstmextra through Luarocks")
   STRING(REGEX REPLACE "(.*)lib/luarocks/rocks.*" "\\1" CMAKE_INSTALL_PREFIX  "${LUAROCKS_PREFIX}")
   MESSAGE(STATUS "Prefix inferred from Luarocks: ${CMAKE_INSTALL_PREFIX}")
 ENDIF()
@@ -18,25 +18,25 @@ LINK_DIRECTORIES("${Torch_INSTALL_LIB}")
 
 FILE(GLOB luasrc *.lua)
 FILE(GLOB src-cuda *.cu)
-CUDA_ADD_LIBRARY(lstmextra MODULE ${src-cuda})
-ADD_TORCH_PACKAGE(lstmextra "${src-cuda}" "${luasrc}" "lstm extra layers in cunn")
-TARGET_LINK_LIBRARIES(lstmextra luaT THC TH)
+CUDA_ADD_LIBRARY(culstmextra MODULE ${src-cuda})
+ADD_TORCH_PACKAGE(culstmextra "${src-cuda}" "${luasrc}" "lstm extra layers in cunn")
+TARGET_LINK_LIBRARIES(culstmextra luaT THC TH)
 
 IF(LUALIB)
-  TARGET_LINK_LIBRARIES(lstmextra ${LUALIB})
+  TARGET_LINK_LIBRARIES(culstmextra ${LUALIB})
 ENDIF()
 
 ### Torch packages supposes libraries prefix is "lib"
-SET_TARGET_PROPERTIES(lstmextra PROPERTIES
+SET_TARGET_PROPERTIES(culstmextra PROPERTIES
   PREFIX "lib"
   IMPORT_PREFIX "lib")
 
-INSTALL(TARGETS lstmextra
+INSTALL(TARGETS culstmextra
   RUNTIME DESTINATION "${Torch_INSTALL_LUA_CPATH_SUBDIR}"
   LIBRARY DESTINATION "${Torch_INSTALL_LUA_CPATH_SUBDIR}")
 
 INSTALL(
   FILES
   ${luasrc}
-  DESTINATION "${Torch_INSTALL_LUA_PATH_SUBDIR}/lstmextra")
+  DESTINATION "${Torch_INSTALL_LUA_PATH_SUBDIR}/culstmextra")
 
