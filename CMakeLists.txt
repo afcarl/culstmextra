@@ -19,7 +19,7 @@ LINK_DIRECTORIES("${Torch_INSTALL_LIB}")
 FILE(GLOB luasrc *.lua)
 FILE(GLOB src-cuda *.cu)
 CUDA_ADD_LIBRARY(culstmextra MODULE ${src-cuda})
-ADD_TORCH_PACKAGE(culstmextra "${src-cuda}" "${luasrc}" "lstm extra layers in cunn")
+ADD_TORCH_PACKAGE(culstmextra "${src-cuda}" "${luasrc}" "extra layers in cunn")
 TARGET_LINK_LIBRARIES(culstmextra luaT THC TH)
 
 IF(LUALIB)

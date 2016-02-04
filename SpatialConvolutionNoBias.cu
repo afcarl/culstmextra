@@ -96,7 +96,7 @@ void col2im_nobias(cudaStream_t stream, const float* data_col, const int channel
   );
 }
 
-static int lstmextra_SpatialConvolutionNoBias_updateOutput(lua_State *L) {
+static int culstmextra_SpatialConvolutionNoBias_updateOutput(lua_State *L) {
   THCState *state = getCutorchState(L);
   // Input
   THCudaTensor *input = (THCudaTensor*)luaT_checkudata(L, 2, "torch.CudaTensor");
@@ -230,7 +230,7 @@ static int lstmextra_SpatialConvolutionNoBias_updateOutput(lua_State *L) {
   return 1;
 }
 
-static int lstmextra_SpatialConvolutionNoBias_updateGradInput(lua_State *L) {
+static int culstmextra_SpatialConvolutionNoBias_updateGradInput(lua_State *L) {
   THCState *state = getCutorchState(L);
   // Inputs
   THCudaTensor *input = (THCudaTensor *)luaT_checkudata(L, 2, "torch.CudaTensor");
@@ -328,7 +328,7 @@ static int lstmextra_SpatialConvolutionNoBias_updateGradInput(lua_State *L) {
   return 1;
 }
 
-static int lstmextra_SpatialConvolutionNoBias_accGradParameters(lua_State *L) {
+static int culstmextra_SpatialConvolutionNoBias_accGradParameters(lua_State *L) {
   THCState *state = getCutorchState(L);
   // Inputs
   THCudaTensor *input = (THCudaTensor *)luaT_checkudata(L, 2, "torch.CudaTensor");
@@ -453,16 +453,16 @@ static int lstmextra_SpatialConvolutionNoBias_accGradParameters(lua_State *L) {
   return 0;
 }
 
-static const struct luaL_Reg lstmextra_SpatialConvolutionNoBias__ [] = {
-  {"SpatialConvolutionNoBias_updateOutput", lstmextra_SpatialConvolutionNoBias_updateOutput},
-  {"SpatialConvolutionNoBias_updateGradInput", lstmextra_SpatialConvolutionNoBias_updateGradInput},
-  {"SpatialConvolutionNoBias_accGradParameters", lstmextra_SpatialConvolutionNoBias_accGradParameters},
+static const struct luaL_Reg culstmextra_SpatialConvolutionNoBias__ [] = {
+  {"SpatialConvolutionNoBias_updateOutput", culstmextra_SpatialConvolutionNoBias_updateOutput},
+  {"SpatialConvolutionNoBias_updateGradInput", culstmextra_SpatialConvolutionNoBias_updateGradInput},
+  {"SpatialConvolutionNoBias_accGradParameters", culstmextra_SpatialConvolutionNoBias_accGradParameters},
   {NULL, NULL}
 };
 
-void lstmextra_SpatialConvolutionNoBias_init(lua_State *L)
+void culstmextra_SpatialConvolutionNoBias_init(lua_State *L)
 {
   luaT_pushmetatable(L, "torch.CudaTensor");
-  luaT_registeratname(L, lstmextra_SpatialConvolutionNoBias__, "nn");
+  luaT_registeratname(L, culstmextra_SpatialConvolutionNoBias__, "nn");
   lua_pop(L,1);
 }
